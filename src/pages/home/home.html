@@ -1,14 +1,37 @@
 <ion-header>
   <ion-navbar>
     <ion-title>
-      Ionic Blank
+     Home Page
     </ion-title>
   </ion-navbar>
 </ion-header>
-
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
-</ion-content>
+  <!-- <ion-list>
+    <button ion-item *ngFor="let productData of products; let i=index" (click)="clickDetails(i)">
+      <ion-icon name="cart" item-start></ion-icon>
+     {{productData}}
+    </button>
+    <button ion-button (click)="submitValue()">Default</button> 
+  </ion-list> -->
+  <ion-grid>
+    <ion-row>
+      <ion-col col-6 *ngFor="let productData of newData ;let i=index">
+        <ion-card (click)="clickItem(i,item)" let i=index>
+          <img style="height:200px" src="{{productData.image}}"/>
+          <ion-card-content>
+            <ion-card-title>
+            {{productData.name}}
+            PRICE:{{productData.price}}
+            RAM:{{productData.ram}}
+            </ion-card-title>
+          </ion-card-content>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+    <!-- <button ion-button (click)="clickSubmit()">Default</button> -->
+  </ion-grid>
+  <ion-fab bottom right>
+      <button ion-fab color="primary" (click)="clickCart()"><ion-icon name="cart"></ion-icon></button>
+  </ion-fab>
+  </ion-content>
+
