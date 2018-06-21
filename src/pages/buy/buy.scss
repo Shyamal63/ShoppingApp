@@ -1,3 +1,31 @@
 page-buy {
-
+      .btn{
+          height:30px;
+          width:20px;
+      }
+      .inputField{
+          height:30%;
+          width:20%;
+        
+          border-width:3em;
+          border-color:#252E35
+      } 
+      .multiItemCol{
+          text-align: center;
+          button, ion-input{
+              display: inline-block;
+              vertical-align: middle;
+              height: 30px;
+              line-height: 30px;
+              font-size: 16px;
+          }
+          ion-input{
+              width: 100px;
+              border-bottom: 1px solid #666;
+              input{
+                  margin: 0px;
+                  text-align: center;
+              }
+          }
+      }
 }

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { CartPage } from '../cart/cart';
+import { BrowserTransferStateModule } from '@angular/platform-browser/src/browser/transfer_state';
 
 /**
  * Generated class for the CartPage page.
@@ -21,63 +22,39 @@ export class DetailsPage {
   public cart : any = [];
   cartData:any;
   dataCart:any
-  found:any
+  orderParam:any
+
   constructor(public navCtrl: NavController, public navParams: NavParams){
   this.homeParam = this.navParams.get('productData');
   console.log(this.homeParam);
-
-  // const personRef=firebase.database().ref('/products/' + this.homeParam);
-  // personRef.on('value', personSnapshot =>{
-  //   console.log(personSnapshot.val());
-  //   var productData=personSnapshot.val();
-  //   this.product=[]
-  //   for(let key of productData){
-  //   }
-  // })
+  this.orderParam = this.navParams.get('orderData');
+  console.log(this.navParams.get('orderData'));
   }
   ionViewDidLoad(){
-  console.log('ionViewDidLoad DetailsPage');
-    let personRef=firebase.database().ref('/carts/');
-    personRef.once('value',cartSnapshot =>{
-      console.log(cartSnapshot.val());
-      this.cartData=[]
-      this.dataCart=cartSnapshot.val()
-      for(let key in this.dataCart){
-        // dataCart[key].newId=key;
-        this.cartData.push(this.dataCart[key])
-      }
-      console.log(this.cartData ) 
-      
-    })
+  console.log('ionViewDidLoad DetailsPage'); 
   }
   clickAddToCart(){
-    console.log(this.homeParam);
-   
-    
-    if(this.cartData != ''){
-      console.log("i am if")
-      this.found=false;
-      for(var i = 0; i<this.cartData.length;i++){
-        if(this.cartData[i].productId != this.homeParam.productId){
-          console.log("i am  if if")
-         this.found=true;
-         break;
-        }
+    let personRef=firebase.database().ref('carts/');
+    personRef.once('value',cartSnapshot =>{
+     if(cartSnapshot.val()){
+      this.dataCart=cartSnapshot.val()
+      var found:boolean = false;
+      for(let key in this.dataCart){
+     if(this.dataCart[key].productId == this.homeParam.productId){
+      found = true;
+      console.log(this.dataCart[key].productId + " and " + this.homeParam.productId);
+     }
+    }
+      if(!found){
+        console.log("not matching")
+        firebase.database().ref('/carts/').push(this.homeParam);
+        this.navCtrl.push(CartPage);
+      }else{
+        alert("already Exixt")
       }
     }else{
-      console.log("i am else");
-      console.log(this.dataCart )
       firebase.database().ref('/carts/').push(this.homeParam);
-     // this.navCtrl.push(CartPage); 
-      alert("product is  in cart");
     }
-    // localStorage.setItem("items",this.homeParam);
-
-    if(this.found==true){
-      firebase.database().ref('/carts/').push(this.homeParam);
-      alert("product is  in cart");
-    }
+    })
   }
-}
-// firebase.database().ref('/carts/').push(this.homeParam);
-// alert("product is  in cart");
+  }

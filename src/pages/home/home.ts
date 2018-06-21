@@ -3,6 +3,7 @@ import { NavController } from 'ionic-angular';
 import * as firebase from 'firebase';
 import { DetailsPage } from '../details/details';
 import { CartPage } from '../cart/cart';
+import { MyorderPage } from '../myorder/myorder';
 
 @Component({
   selector: 'page-home',
@@ -11,7 +12,11 @@ import { CartPage } from '../cart/cart';
 export class HomePage {
   newData:any
   ProductDetails:any
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController){
+
+
+
+
   
     this.ProductDetails=[
       {"name":"Redmi Note5","price":10000,"ram":"3gb","image":"../../assets/imgs/mobile.jpg","productId":"12321"},
@@ -25,13 +30,18 @@ export class HomePage {
          this.newData=personSnapshot.val();  
         console.log(this.newData);
        })
+
+
+
+
+       
       }
   // }
   // clickSubmit(){
   //   alert("hello");
   //   firebase.database().ref('/products/').set(this.ProductDetails);
   // }
-  clickItem(i,newData){
+  clickItem(i){
     // console.log(this.products[i])
     console.log(this.newData[i]);
     this.navCtrl.push(DetailsPage,{productData:this.newData[i]});
@@ -39,6 +49,9 @@ export class HomePage {
 clickCart(){
   // alert("cart clicked");
   this.navCtrl.push(CartPage);
+}
+placedOrder(){
+  this.navCtrl.push(MyorderPage);
 }
 }
 

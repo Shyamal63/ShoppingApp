@@ -10,6 +10,7 @@ import * as firebase from 'firebase';
 import { DetailsPageModule } from '../pages/details/details.module';
 import { CartPageModule } from '../pages/cart/cart.module';
 import { BuyPageModule } from '../pages/buy/buy.module';
+import { MyorderPageModule } from '../pages/myorder/myorder.module';
 
 
 
@@ -32,6 +33,7 @@ firebase.initializeApp(config);
     DetailsPageModule,
     CartPageModule,
     BuyPageModule,
+    MyorderPageModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

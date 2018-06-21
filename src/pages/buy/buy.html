@@ -14,5 +14,83 @@
 
 
 <ion-content padding>
-<h1>hello</h1>
+    <!-- <img src="{{dataParam.image}}"  /><br/>
+  Mobile:<h1>{{dataParam.name}}</h1>
+  price:<h1>{{dataParam.price}}</h1>
+  Total Price:<h1>Total Price</h1>
+  <button class="btn" ion-button round>-</button> <ion-item>
+      <ion-input type="number"  class="inputField" placeholder="Clear Input" clearInput  [(ngModel)]="value"></ion-input>
+    </ion-item>  <button class="btn" ion-button round>+</button><br/>
+  <button ion-button (click)="buyNow()">Buy Now!</button> -->
+
+
+
+  <ion-grid>
+      <ion-row>
+        <ion-col>
+          <img src="{{dataParam.image}}" />
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+              <h1>Model Name:</h1>
+        </ion-col>
+        <ion-col>
+              <h1>{{dataParam.name}}</h1>
+        </ion-col>
+      </ion-row>
+      <ion-row>
+          <ion-col>
+              <h2>Description</h2>
+          </ion-col>
+          <ion-col>
+              <h2>Ram:{{dataParam.ram}}</h2>
+          </ion-col>
+      </ion-row>
+      <ion-row>
+        <ion-col>
+         <h3> Baic Rate:</h3>
+          </ion-col>
+          <ion-col>
+             <h3>Rs.{{dataParam.price}}</h3> 
+          </ion-col>
+        </ion-row>
+        <ion-row>
+            <ion-col>
+             <h3>GST:</h3>
+              </ion-col>
+              <ion-col>
+                 <h3>18%</h3> 
+              </ion-col>
+            </ion-row>
+        <ion-row>
+          <ion-col>
+           <h3>Shiping Charge:</h3>
+            </ion-col>
+            <ion-col>
+               <h3>Rs.50</h3> 
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h3>Quantity:</h3>
+            </ion-col>
+            <ion-col class="multiItemCol">
+              <button class="btn" ion-button round (click)="decrement()">-</button> 
+              <ion-input type="number"  
+                class="inputField" placeholder="Clear Input"  [(ngModel)]="quantity"></ion-input>
+              <button class="btn" ion-button round (click)="add()">+</button>
+            </ion-col>
+          </ion-row>
+          <ion-row>
+            <ion-col>
+              <h3>Final Price:</h3> 
+            </ion-col>
+            <ion-col>
+              <h3>Rs.{{finalPrice}}</h3>
+            </ion-col>
+          </ion-row>
+    </ion-grid>
+    <button class="newbtn" ion-button round let i=index (click)="orderPlace(i)">Buy Now</button>
 </ion-content>
+

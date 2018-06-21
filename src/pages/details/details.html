@@ -11,9 +11,17 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding>
-<img style="height:200px" src="{{homeParam.image}}"/><br/><br/>
-Name:<h1>{{homeParam.name}}</h1>
-Price<h1>{{homeParam.price}}</h1>
-Ram:<h1>{{homeParam.ram}}</h1>
-<button ion-button (click)="clickAddToCart()">AddToCart</button>
+  <div *ngIf="homeParam">
+      <img style="height:200px" src="{{homeParam.image}}"/><br/><br/>
+      Name:<h1>{{homeParam.name}}</h1>
+      Price<h1>{{homeParam.price}}</h1>
+      Ram:<h1>{{homeParam.ram}}</h1>
+      <button ion-button (click)="clickAddToCart()">AddToCart</button>
+  </div>
+  <div *ngIf="orderParam">
+      <img style="height:200px" src="{{orderParam.image}}"/><br/><br/>
+      Name:<h1>{{orderParam.name}}</h1>
+      Price<h1>{{orderParam.price}}</h1>
+      Ram:<h1>{{orderParam.ram}}</h1>
+  </div>
 </ion-content>
