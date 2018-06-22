@@ -49,7 +49,7 @@ export class CartPage {
 //    firebase.database().ref('/carts/' +this.dataCart[i].itemKey).set({
 //    id:this.productId
 // })
-    this.navCtrl.push(BuyPage,{mycartData:this.dataCart[i]}); 
+     this.navCtrl.push(BuyPage,{mycartData:this.dataCart[i]}); 
   }
   itemDelete(i){
     console.log(this.dataCart[i]);

@@ -14,36 +14,16 @@
 
 
 <ion-content padding>
-  <!-- <ion-card *ngFor="let data of ordersData; let i=index">
-   <img src="{{data.image}}"/>
-  </ion-card> -->
-
-
-  <!-- <ion-grid>
-      <ion-row>
-        <ion-col col-6 *ngFor="let data of ordersData; let i=index">
-          <ion-card>
-            <img style="height:200px" src="{{data.image}}"/>
-            <ion-card-content>
-              <ion-card-title>
-              {{data.name}}
-              PRICE:{{data.price}}
-              RAM:{{data.ram}}
-              </ion-card-title>
-            </ion-card-content>
-          </ion-card>
-        </ion-col>
-      </ion-row>
-    </ion-grid> -->
-    <ion-list *ngFor="let data of ordersData; let i=index">
+    <ion-list>
         <ion-item>
           <ion-thumbnail item-start>
-            <img src="{{data.image}}">
+            <img src="{{productData.image}}">
           </ion-thumbnail>
-          <h2>{{data.name}}</h2>
-          <p>productId:{{data.id}}</p>
+          <h2>{{productData.name}}</h2>
+          <p>productId:{{productData.tid}}</p>
+          <p>price:{{productData.finalprice}}</p>
+          <!-- <p>date:{{data.date}}</p> -->
           <button ion-button clear item-end (click)="clickView(i)" let i=index >View</button>
         </ion-item>
-      </ion-list>
-    
+      </ion-list>    
 </ion-content>

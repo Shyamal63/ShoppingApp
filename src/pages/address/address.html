@@ -1,0 +1,38 @@
+<!--
+  Generated template for the AddressPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>address</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+<h1>Item will be Delivered to:</h1>
+<ion-item>
+  <ion-label color="primary">Name</ion-label>
+  <ion-input type="text" placeholder="Your Name"  [(ngModel)]="yourName"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary" >Phone No</ion-label>
+  <ion-input type="number" placeholder="phone number" [(ngModel)]="pnumber"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary">Email</ion-label>
+  <ion-input type="email" placeholder="email"  [(ngModel)]="email"></ion-input>
+</ion-item>
+
+<ion-item>
+  <ion-label color="primary" >Address</ion-label>
+  <ion-input placeholder="address" [(ngModel)]="address"></ion-input>
+</ion-item>
+<button ion-button (click)="nextButtonClick()">Next</button>
+</ion-content>

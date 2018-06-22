@@ -19,20 +19,26 @@ export class MyorderPage {
   ordersData:any;
   productId:any;
   id:any;
+  productData:any
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
-const personRef=firebase.database().ref('/orders/');
-personRef.on('value',orderSnap =>{
-  console.log(orderSnap.val());
-  let orders=orderSnap.val();
-  console.log(orders);
-  this.ordersData=[]
-  for(let key in orders){
-    this.ordersData.push(orders[key]);
-
-  }
+// const personRef=firebase.database().ref('/orders/');
+// personRef.on('value',orderSnap =>{
+//   console.log(orderSnap.val());
+//   let orders=orderSnap.val();
+//   console.log(orders);
+//   this.ordersData=[]
+//   for(let key in orders){
+//     this.ordersData.push(orders[key]);
+//   }
+//   console.log(this.ordersData);
   
-})
+// })
+
+this.productData=this.navParams.get('orderDtlsParam')
+console.log(this.productData);
+
+
   }
   ionViewDidLoad() {
     console.log('ionViewDidLoad MyorderPage');

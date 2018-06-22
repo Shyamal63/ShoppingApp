@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import *as firebase from 'firebase';
 import { MyorderPage } from '../myorder/myorder';
+import { AddressPage } from '../address/address';
 
 /**
  * Generated class for the BuyPage page.
@@ -36,21 +37,17 @@ export class BuyPage {
        console.log(key);
       }
     })
-    const personRef1=firebase.database().ref('/orders/');
-    personRef1.once('value', personSnapshot =>{
-      console.log(personSnapshot.val());
-      let orderData=personSnapshot.val();
-      console.log(orderData);
-      for(let key in orderData){
-        orderData[key].itemKey=key
-        this.dataOrder.push(orderData[key]);
-      }
-      console.log(this.dataOrder);
-    })
-
-
-
-
+    // const personRef1=firebase.database().ref('/orders/');
+    // personRef1.once('value', personSnapshot =>{
+    //   console.log(personSnapshot.val());
+    //   let orderData=personSnapshot.val();
+    //   console.log(orderData);
+    //   for(let key in orderData){
+    //     orderData[key].itemKey=key
+    //     this.dataOrder.push(orderData[key]);
+    //   }
+    //   console.log(this.dataOrder);
+    // })
 this.quantity=1;
  this.dataParam=this.navParams.get('mycartData');
  console.log(this.dataParam);
@@ -78,18 +75,28 @@ this.quantity=1;
     this.finalPrice=(price+((price*18/100)+50));
     // this.finalPrice=(this.dataParam.price+(((this.dataParam.price)*(this.quantity))*18/100)+50)
   }
-  orderPlace(i){    
-    console.log(this.dataParam)
-    this.dataParam.tid="55444655554";
+  orderPlace(){ 
     console.log(this.dataParam);
     var d = new Date();
+    console.log(d);
     this.id=Math.random().toString().substr(2,4)+(this.dataParam.name)+"_"+(d.getMonth())+"/"+(d.getFullYear());
     this.dataParam.tid=this.id;
+    this.dataParam.finalprice=this.finalPrice;
+    this.dataParam.quantity=this.quantity,
     console.log(this.dataParam.tid);
-
-    // firebase.database().ref('/orders/' ).set({
-    // id:this.productId
+    // firebase.database().ref('/orders/' ).push({
+    // id:this.id,
+    // name:this.dataParam.name,
+    // image:this.dataParam.image,
+    // ram:this.dataParam.ram,
+    // finalprice:this.finalPrice,
+    // quantity:this.quantity,
+    // itemKey:this.dataParam.itemKey,
+    // price:this.dataParam.price,
+    // date:d,
     // })
+    this.navCtrl.push(AddressPage,{details:this.dataParam});
+   firebase.database().ref('/carts/' +this.dataParam.item).remove();
 
   //  firebase.database().ref('/orders/').push(this.dataParam);
   //  console.log(this.dataParam);
